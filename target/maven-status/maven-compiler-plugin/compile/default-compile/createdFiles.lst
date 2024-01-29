@@ -1,0 +1,11 @@
+com\example\aulajsf\services\UserService.class
+com\example\aulajsf\dto\UserDTO.class
+com\example\aulajsf\entities\WorkerEntity.class
+com\example\aulajsf\repositories\WorkerRepository.class
+com\example\aulajsf\services\UserServiceImpl.class
+com\example\aulajsf\entities\CompanyEntity.class
+com\example\aulajsf\repositories\UserRepository.class
+com\example\aulajsf\repositories\CompanyRepository.class
+com\example\aulajsf\repositories\HibernateConnector.class
+com\example\aulajsf\controllers\UserController.class
+com\example\aulajsf\entities\UserEntity.class

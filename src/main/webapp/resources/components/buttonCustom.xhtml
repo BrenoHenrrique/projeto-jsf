@@ -1,0 +1,51 @@
+<!-- resources/components/meuBotao.xhtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+<cc:interface>
+    <cc:attribute name="icon" type="java.lang.String"/>
+    <cc:attribute name="value" type="java.lang.String"/>
+    <cc:attribute name="update" type="java.lang.String"/>
+    <cc:attribute name="action" method-signature="void action()"/>
+</cc:interface>
+<cc:implementation>
+    <h:outputStylesheet library="css" name="global.css"/>
+    <style>
+        .button-custom {
+            display: inline-block;
+            height: 35px;
+            width: 150px;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #1a4cf3;
+            border: 1px solid #1a4cf3;
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-size: 16px;
+            border-radius: 3px;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .button-custom:hover {
+            border-color: #40a9ff;
+            background-color: #40a9ff !important;
+            outline: none;
+        }
+    </style>
+
+    <p:commandButton
+            styleClass="button-custom"
+            icon="#{cc.attrs.icon}"
+            value="#{cc.attrs.value}"
+            action="#{cc.attrs.action}"
+            update="#{cc.attrs.update}"
+    />
+</cc:implementation>
+</html>

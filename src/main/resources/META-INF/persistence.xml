@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory name="">
+
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/payment?autoReconnect=true</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">1</property>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="connection.autoReconnect">true</property>
+        <property name="connection.autoReconnectForPools">true</property>
+        <property name="connection.is-connection-validation-required">true</property>
+
+        <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.generate_statistics">false</property>
+        <property name="hibernate.use_sql_comments">false</property>
+
+        <!-- FIXME: Remove JNDI para que o projeto funcione -->
+        <property name="hibernate.session_factory_name_is_jndi">false</property>
+
+        <mapping class="com.example.aulajsf.entities.UserEntity" />
+        <mapping class="com.example.aulajsf.entities.WorkerEntity" />
+        <mapping class="com.example.aulajsf.entities.CompanyEntity" />
+    </session-factory>
+</hibernate-configuration>
