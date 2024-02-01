@@ -19,8 +19,9 @@
     <div class="login-form-diagonal-line-orange"/>
     <div class="login-form-container">
         <h:form id="frm" styleClass="login-form">
-            <p:growl id="messages" life="3000" />
-            <p:messages id="msgs"/>
+            <p:growl id="messages" life="3000" showSummary="true" showDetail="true">
+                <p:autoUpdate/>
+            </p:growl>
             <h1 class="login-form-title">Bem-vindo de Volta</h1>
             <h3 class="login-form-register">Ainda não tem conta? <a href="RegisterPage.xhtml">Registre-se.</a></h3>
             <div class="login-form-container-fields">
@@ -33,11 +34,11 @@
                         requiredMessage="Preencha o campo email"
                 />
                 <i class="pi pi-user"/>
-                <p:message for=":frm:email" display="icon"/>
             </div>
             <div class="login-form-container-fields">
                 <i class="pi pi-ellipsis-h"/>
                 <comp:inputCustom
+                        id="password"
                         type="password"
                         value="#{user.params.password}"
                         placeholder="Digite sua senha"
@@ -49,6 +50,7 @@
                         value="Entrar"
                         action="#{user.authenticate}"
                         update=":frm:messages"
+                        process="@this"
                 />
             </div>
         </h:form>

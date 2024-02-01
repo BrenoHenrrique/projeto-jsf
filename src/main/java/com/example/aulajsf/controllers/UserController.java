@@ -2,9 +2,11 @@ package com.example.aulajsf.controllers;
 
 import com.example.aulajsf.dto.UserDTO;
 import com.example.aulajsf.entities.UserEntity;
+import com.example.aulajsf.messages.UtilMessages;
 import com.example.aulajsf.services.UserService;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.SneakyThrows;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -26,6 +28,10 @@ public class UserController implements Serializable {
     @Setter
     private UserDTO params = new UserDTO();
 
+    @Getter
+    @Setter
+    private UserDTO user = new UserDTO();
+
     public List<UserEntity> index() {
         return service.findAll();
     }
@@ -34,14 +40,16 @@ public class UserController implements Serializable {
         return service.findById(params.getId());
     }
 
-    public UserEntity authenticate() {
-        UserEntity user = service.authenticate(params);
-        if (user == null) {
-            FacesContext.getCurrentInstance().addMessage("messages", new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuário ou senha inválidos"));
-            return null;
-        } else {
-            return user;
+    public void authenticate() {
+        try {
+            UserEntity entity = service.authenticate(params);
+            if (entity == null) {
+                UtilMessages.warningMessage("Usuário ou senha inválidos");
+            } else {
+                user = new UserDTO(entity);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Usuário não encontrado");
         }
     }
-
 }

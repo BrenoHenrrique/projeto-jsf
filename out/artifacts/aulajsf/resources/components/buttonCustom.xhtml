@@ -7,6 +7,7 @@
     <cc:attribute name="icon" type="java.lang.String"/>
     <cc:attribute name="value" type="java.lang.String"/>
     <cc:attribute name="update" type="java.lang.String"/>
+    <cc:attribute name="process" type="java.lang.String"/>
     <cc:attribute name="action" method-signature="void action()"/>
 </cc:interface>
 <cc:implementation>
@@ -46,6 +47,7 @@
             value="#{cc.attrs.value}"
             action="#{cc.attrs.action}"
             update="#{cc.attrs.update}"
+            process="#{cc.attrs.process}"
     />
 </cc:implementation>
 </html>
