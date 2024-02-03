@@ -1,4 +1,4 @@
-package com.example.aulajsf.repositories;
+package com.example.projectjsf.repositories;
 
 import lombok.Getter;
 import org.hibernate.SessionFactory;

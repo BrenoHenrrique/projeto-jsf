@@ -1,6 +1,6 @@
-package com.example.aulajsf.dto;
+package com.example.projectjsf.dto;
 
-import com.example.aulajsf.entities.UserEntity;
+import com.example.projectjsf.entities.UserEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

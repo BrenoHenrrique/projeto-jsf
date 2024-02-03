@@ -1,4 +1,4 @@
-package com.example.aulajsf.entities;
+package com.example.projectjsf.entities;
 
 import javax.persistence.*;
 import lombok.Data;

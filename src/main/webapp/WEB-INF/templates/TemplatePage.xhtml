@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title><ui:insert name="title">Default Title</ui:insert></title>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+    <h:outputStylesheet library="css" name="global.css"/>
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+
+        #top-bar {
+            cursor: pointer;
+            color: white;
+            background-color: #1a4cf3;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            margin-left: 160px;
+            overflow: hidden;
+        }
+
+        #side-menu {
+            cursor: pointer;
+            color: white;
+            background-color: #1a4cf3;
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 0;
+            width: 160px;
+            height: calc(100% - 50px);
+        }
+
+        #footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            background-color: #FAFAFA;
+            border-top: #ccc solid 1px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        #footer i {
+            cursor: pointer;
+        }
+
+        #content {
+            margin-top: 50px;
+            margin-left: 200px;
+        }
+    </style>
+</h:head>
+<body>
+<header id="top-bar">
+    <label>Top bar</label>
+</header>
+
+<aside id="side-menu">
+    <label>Side menu</label>
+</aside>
+
+<footer id="footer">
+    <h:outputText value="© 2024 Company - All rights reserved"/>
+    <i class="pi pi-copy"/>
+</footer>
+
+<div id="content">
+    <ui:insert name="content"/>
+</div>
+
+</body>
+</html>

@@ -1,16 +1,16 @@
-package com.example.aulajsf.repositories;
+package com.example.projectjsf.repositories;
 
-import com.example.aulajsf.entities.CompanyEntity;
+import com.example.projectjsf.entities.WorkerEntity;
 import javax.persistence.TypedQuery;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompanyRepository {
+public class WorkerRepository {
     private final Session session;
 
-    public CompanyRepository() {
+    public WorkerRepository() {
         session = HibernateConnector.getSessionFactory().openSession();
     }
 
@@ -21,10 +21,10 @@ public class CompanyRepository {
         }
     }
 
-    public List<CompanyEntity> findAll() {
+    public List<WorkerEntity> findAll() {
         try {
-            String sql = "from CompanyEntity c";
-            TypedQuery<CompanyEntity> query = session.createQuery(sql, CompanyEntity.class);
+            String sql = "from WorkerEntity w";
+            TypedQuery<WorkerEntity> query = session.createQuery(sql, WorkerEntity.class);
             return new ArrayList<>(query.getResultList());
         } catch (Exception e) {
             throw new RuntimeException("Error, try again.");
@@ -33,10 +33,10 @@ public class CompanyRepository {
         }
     }
 
-    public CompanyEntity findById(Long id) {
+    public WorkerEntity findById(Long id) {
         try {
-            String sql = "from CompanyEntity c where c.id = :id";
-            TypedQuery<CompanyEntity> query = session.createQuery(sql, CompanyEntity.class);
+            String sql = "from WorkerEntity w where w.id = :id";
+            TypedQuery<WorkerEntity> query = session.createQuery(sql, WorkerEntity.class);
             query.setParameter("id", id);
             return query.getSingleResult();
         } catch (Exception e) {

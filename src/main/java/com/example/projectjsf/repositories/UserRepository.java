@@ -1,11 +1,10 @@
-package com.example.aulajsf.repositories;
+package com.example.projectjsf.repositories;
 
-import com.example.aulajsf.dto.UserDTO;
-import com.example.aulajsf.entities.UserEntity;
+import com.example.projectjsf.dto.UserDTO;
+import com.example.projectjsf.entities.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 
-import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,43 +26,44 @@ public class UserRepository {
     }
 
     public List<UserEntity> findAll() {
+        List<UserEntity> users;
         try {
             String sql = "from UserEntity u";
             TypedQuery<UserEntity> query = session.createQuery(sql, UserEntity.class);
-            return new ArrayList<>(query.getResultList());
-        } catch (Exception e) {
-            throw new RuntimeException("Error, try again.");
+            users = new ArrayList<>(query.getResultList());
         } finally {
             destroy();
         }
+
+        return users;
     }
 
     public UserEntity findById(Long id) {
+        UserEntity user;
         try {
             String sql = "from UserEntity u where u.id = :id";
             TypedQuery<UserEntity> query = session.createQuery(sql, UserEntity.class);
             query.setParameter("id", id);
-            return query.getSingleResult();
-        } catch (Exception e) {
-            throw new RuntimeException("Error, try again.");
+            user = query.getSingleResult();
         } finally {
             destroy();
         }
+
+        return user;
     }
 
     public UserEntity authenticate(UserDTO params) {
+        UserEntity user;
         try {
             String sql = "from UserEntity u where u.email = :email and u.password = :password";
             TypedQuery<UserEntity> query = session.createQuery(sql, UserEntity.class);
             query.setParameter("email", params.getEmail());
             query.setParameter("password", params.getPassword());
-            return query.getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao autenticar o usuário.");
+            user = query.getSingleResult();
         } finally {
             destroy();
         }
+
+        return user;
     }
 }

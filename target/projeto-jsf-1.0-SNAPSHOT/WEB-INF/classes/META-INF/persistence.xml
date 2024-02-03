@@ -26,8 +26,8 @@
         <!-- FIXME: Remove JNDI para que o projeto funcione -->
         <property name="hibernate.session_factory_name_is_jndi">false</property>
 
-        <mapping class="com.example.aulajsf.entities.UserEntity" />
-        <mapping class="com.example.aulajsf.entities.WorkerEntity" />
-        <mapping class="com.example.aulajsf.entities.CompanyEntity" />
+        <mapping class="com.example.projectjsf.entities.UserEntity" />
+        <mapping class="com.example.projectjsf.entities.WorkerEntity" />
+        <mapping class="com.example.projectjsf.entities.CompanyEntity" />
     </session-factory>
 </hibernate-configuration>

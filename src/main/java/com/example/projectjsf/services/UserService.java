@@ -1,7 +1,7 @@
-package com.example.aulajsf.services;
+package com.example.projectjsf.services;
 
-import com.example.aulajsf.dto.UserDTO;
-import com.example.aulajsf.entities.UserEntity;
+import com.example.projectjsf.dto.UserDTO;
+import com.example.projectjsf.entities.UserEntity;
 
 import java.util.List;
 

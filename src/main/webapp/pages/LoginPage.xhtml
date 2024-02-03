@@ -8,9 +8,9 @@
       xml:lang="pt-BR">
 <h:head>
     <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <h:outputStylesheet library="css" name="global.css"/>
     <h:outputStylesheet library="css" name="login-form.css"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
 </h:head>
 
@@ -40,6 +40,7 @@
                 <comp:inputCustom
                         id="password"
                         type="password"
+                        required="true"
                         value="#{user.params.password}"
                         placeholder="Digite sua senha"
                         requiredMessage="Preencha o campo senha"
@@ -50,7 +51,6 @@
                         value="Entrar"
                         action="#{user.authenticate}"
                         update=":frm:messages"
-                        process="@this"
                 />
             </div>
         </h:form>
