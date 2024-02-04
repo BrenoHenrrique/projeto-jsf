@@ -54,12 +54,12 @@
             bottom: 35px;
             width: 100%;
             transition: 0.5s;
-            transform: rotate(180deg);
+            transform: rotate(0deg);
         }
 
         #toggle-button.open {
             transition: 0.5s;
-            transform: rotate(0deg);
+            transform: rotate(180deg);
         }
 
         #toggle-button i {
@@ -100,13 +100,13 @@
 
 <aside id="side-menu">
     <div id="toggle-button">
-        <i class="pi pi-angle-double-left"/>
+        <i class="pi pi-angle-double-right"/>
     </div>
 </aside>
 
 <footer id="footer">
     <h:outputText value="© 2024 Company - All rights reserved"/>
-    <i class="pi pi-angle-double-right"/>
+    <i class="pi pi-copy"/>
 </footer>
 <div id="content">
     <ui:insert name="content"/>
