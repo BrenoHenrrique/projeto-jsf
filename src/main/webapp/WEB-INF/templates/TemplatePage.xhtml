@@ -8,10 +8,6 @@
     <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
     <h:outputStylesheet library="css" name="global.css"/>
     <style>
-        html, body {
-            overflow: hidden;
-        }
-
         #top-bar {
             cursor: pointer;
             color: white;
@@ -20,9 +16,16 @@
             top: 0;
             width: 100%;
             height: 50px;
-            margin-left: 160px;
+            margin-left: 50px;
             overflow: hidden;
+            transition: 0.5s;
         }
+
+        #top-bar.open {
+            transition: 0.5s;
+            margin-left: 160px;
+        }
+
 
         #side-menu {
             cursor: pointer;
@@ -32,8 +35,38 @@
             left: 0;
             top: 0;
             margin: 0;
-            width: 160px;
+            width: 50px;
             height: calc(100% - 50px);
+            transition: 0.5s;
+        }
+
+        #side-menu.open {
+            transition: 0.3s;
+            width: 160px;
+        }
+
+        #toggle-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            bottom: 35px;
+            width: 100%;
+            transition: 0.5s;
+            transform: rotate(180deg);
+        }
+
+        #toggle-button.open {
+            transition: 0.5s;
+            transform: rotate(0deg);
+        }
+
+        #toggle-button i {
+            margin: 0;
+            font-size: 45px;
+            text-align: center;
+            transition: 0.5s;
         }
 
         #footer {
@@ -66,17 +99,36 @@
 </header>
 
 <aside id="side-menu">
-    <label>Side menu</label>
+    <div id="toggle-button">
+        <i class="pi pi-angle-double-left"/>
+    </div>
 </aside>
 
 <footer id="footer">
     <h:outputText value="© 2024 Company - All rights reserved"/>
-    <i class="pi pi-copy"/>
+    <i class="pi pi-angle-double-right"/>
 </footer>
-
 <div id="content">
     <ui:insert name="content"/>
 </div>
 
+<script>
+    //<![CDATA[
+    document.querySelector("#toggle-button").addEventListener("click", function () {
+        const topbar = document.querySelector("#top-bar");
+        const sidebar = document.querySelector("#side-menu");
+        const buttonToggle = document.querySelector("#toggle-button");
+        if (sidebar.classList.contains("open") || topbar.classList.contains("open") || buttonToggle.classList.contains("open")) {
+            topbar.classList.remove("open");
+            sidebar.classList.remove("open");
+            buttonToggle.classList.remove("open");
+        } else {
+            topbar.classList.add("open");
+            sidebar.classList.add("open");
+            buttonToggle.classList.add("open");
+        }
+    });
+    //]]>
+</script>
 </body>
 </html>
