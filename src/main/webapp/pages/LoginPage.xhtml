@@ -9,9 +9,9 @@
 <h:head>
     <title>Login</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
     <h:outputStylesheet library="css" name="global.css"/>
     <h:outputStylesheet library="css" name="login-form.css"/>
-    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
 </h:head>
 
 <h:body>
@@ -35,6 +35,7 @@
                 />
                 <i class="pi pi-user"/>
             </div>
+            <p:message for="email" display="email" />
             <div class="login-form-container-fields">
                 <i class="pi pi-ellipsis-h"/>
                 <comp:inputCustom
@@ -45,12 +46,13 @@
                         placeholder="Digite sua senha"
                         requiredMessage="Preencha o campo senha"
                 />
+                <p:message for="password" />
             </div>
             <div class="login-form-submit">
                 <comp:buttonCustom
                         value="Entrar"
                         action="#{user.authenticate}"
-                        update=":frm:messages"
+                        update=":frm"
                 />
             </div>
         </h:form>

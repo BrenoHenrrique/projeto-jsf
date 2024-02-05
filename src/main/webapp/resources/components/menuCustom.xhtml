@@ -1,0 +1,81 @@
+<!-- resources/components/meuBotao.xhtml -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+<cc:interface>
+</cc:interface>
+<cc:implementation>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+    <aside id="side-menu">
+        <div id="logo">
+            <i class="fa fa-fw fa-bank"/>
+        </div>
+        <ul id="container-items">
+            <li>
+                <h:outputText styleClass="fa fa-fw fa-user-plus" id="cad-users"/>
+                <h:link
+                        class="menu-text"
+                        value="Cadastro de Usuários"
+                        outcome="CadastroUsuarioPage.xhtml"
+                />
+                <p:tooltip
+                        for="cad-users"
+                        value="Cadastro de Usuários"
+                        position="top"
+                />
+            </li>
+            <li>
+                <h:outputText styleClass="fa fa-fw fa-building" id="cad-company"/>
+                <h:link
+                        class="menu-text"
+                        value="Cadastro de Empresas"
+                        outcome="CadastroUsuarioPage.xhtml"
+                />
+                <p:tooltip
+                        for="cad-company"
+                        value="Cadastro de Empresas"
+                        position="top"
+                />
+            </li>
+        </ul>
+        <div id="toggle-button">
+            <i class="pi pi-angle-double-right"/>
+        </div>
+    </aside>
+
+    <script>
+        //<![CDATA[
+        document.querySelector("#toggle-button").addEventListener("click", function () {
+            const topbar = document.querySelector("#top-bar");
+            const content = document.querySelector("#content");
+            const sidebar = document.querySelector("#side-menu");
+            const buttonToggle = document.querySelector("#toggle-button");
+            const itemsMenu = document.querySelectorAll(".menu-text");
+            itemsMenu.forEach((item) => {
+                if (item.classList.contains("menu-text-close")) {
+                    item.classList.remove("menu-text-close");
+                } else {
+                    item.classList.add("menu-text-close");
+                }
+            });
+            if (sidebar.classList.contains("close") ||
+                content.classList.contains("close") ||
+                topbar.classList.contains("close") ||
+                buttonToggle.classList.contains("close")
+            ) {
+                topbar.classList.remove("close");
+                sidebar.classList.remove("close");
+                content.classList.remove("close");
+                buttonToggle.classList.remove("close");
+            } else {
+                topbar.classList.add("close");
+                sidebar.classList.add("close");
+                content.classList.add("close");
+                buttonToggle.classList.add("close");
+            }
+        });
+        //]]>
+    </script>
+</cc:implementation>
+</html>
