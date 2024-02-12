@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:comp="http://java.sun.com/jsf/composite/components"
+>
+<ui:composition template="/WEB-INF/templates/TemplatePage.xhtml">
+    <ui:define name="content">
+        <style>
+            .accordeon-custom {
+                background-color: #f9f9f9;
+                border: solid 1px #ccc;
+                border-radius: 5px;
+            }
+        </style>
+        <h:form id="frm">
+            <h2>Lista de Usuários</h2>
+            <p:accordionPanel styleClass="accordeon-custom">
+                <p:tab title="Filtros" titleStyle="background-color: white; border-bottom: solid 1px #ccc">
+                    <p:outputPanel id="output">
+                        <p:panelGrid columns="3" layout="grid">
+                            <p:panelGrid columns="1" layout="grid">
+                                <h:outputLabel value="Nome" style="margin-left: 12px"/>
+                                <comp:inputCustom
+                                        type="text"
+                                        value="#{user.params.name}"
+                                        placeholder="Digite o nome do usuário"
+                                />
+                            </p:panelGrid>
+                            <p:panelGrid columns="1" layout="grid">
+                                <h:outputLabel value="Email" style="margin-left: 12px"/>
+                                <comp:inputCustom
+                                        type="text"
+                                        value="#{user.params.name}"
+                                        placeholder="Digite o email do usuário"
+                                />
+                            </p:panelGrid>
+                            <p:panelGrid columns="1" layout="grid" style="margin-top: 45px">
+                                <comp:buttonCustom
+                                        process="@form"
+                                        value="Pesquisar"
+                                        action="#{user.search}"
+                                        update=":frm:user-table"
+                                />
+                            </p:panelGrid>
+                        </p:panelGrid>
+                    </p:outputPanel>
+                </p:tab>
+            </p:accordionPanel>
+            <p:dataTable
+                    id="user-table"
+                    style="margin-top: 10px;"
+                    var="entity"
+                    value="#{user.entities}"
+                    emptyMessage="Nenhum usuário encontrado."
+            >
+                <p:column headerText="Id">
+                    <h:outputText value="#{entity.id}"/>
+                </p:column>
+                <p:column headerText="Nome">
+                    <h:outputText value="#{entity.name}"/>
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{entity.email}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

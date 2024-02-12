@@ -20,4 +20,8 @@ public class UserDTO {
         email = entity.getEmail();
         password = entity.getPassword();
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

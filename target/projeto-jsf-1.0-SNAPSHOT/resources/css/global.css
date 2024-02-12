@@ -76,7 +76,7 @@ html, body {
     border: solid 1px #00b58b;
     padding: 7px;
     border-radius: 5px;
-    margin-top: 10px;
+    margin: 10px 5px 0 5px;
 }
 
 #container-items li:hover {

@@ -9,4 +9,5 @@ public interface UserService {
     List<UserEntity> findAll();
     UserEntity findById(Long id);
     UserEntity authenticate(UserDTO params);
+    List<UserEntity> search(UserDTO params);
 }
