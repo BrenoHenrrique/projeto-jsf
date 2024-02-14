@@ -3,7 +3,7 @@ package com.example.projectjsf.filter;
 import javax.servlet.*;
 import java.io.IOException;
 
-public class HibernateSessionRequestFilter implements Filter {
+public class SessionRequestFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) {

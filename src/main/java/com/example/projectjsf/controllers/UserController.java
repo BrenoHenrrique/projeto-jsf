@@ -31,10 +31,6 @@ public class UserController implements Serializable {
     @Setter
     private UserDTO params;
 
-    @Getter
-    @Setter
-    private UserDTO user;
-
     @PostConstruct
     public void postContruct() {
         params = new UserDTO();
@@ -48,9 +44,9 @@ public class UserController implements Serializable {
     }
 
     public List<UserDTO> search() {
-        List<UserEntity> entities = service.search(params);
-        List<UserDTO> dtos = entities.stream().map(UserDTO::new).collect(Collectors.toList());
-        return dtos;
+        List<UserEntity> values = service.search(params);
+        entities = values.stream().map(UserDTO::new).collect(Collectors.toList());
+        return entities;
     }
 
     public UserDTO get() {

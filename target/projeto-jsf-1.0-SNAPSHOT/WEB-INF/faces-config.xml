@@ -9,5 +9,8 @@
         <exception-handler-factory>
             com.example.projectjsf.exceptions.HandleExceptionsFactory
         </exception-handler-factory>
+        <exception-handler-factory>
+            com.example.projectjsf.utils.EmptyStringToNullConverter
+        </exception-handler-factory>
     </factory>
 </faces-config>

@@ -23,6 +23,7 @@
                             <p:panelGrid columns="1" layout="grid">
                                 <h:outputLabel value="Nome" style="margin-left: 12px"/>
                                 <comp:inputCustom
+                                        id="name"
                                         type="text"
                                         value="#{user.params.name}"
                                         placeholder="Digite o nome do usuário"
@@ -31,14 +32,14 @@
                             <p:panelGrid columns="1" layout="grid">
                                 <h:outputLabel value="Email" style="margin-left: 12px"/>
                                 <comp:inputCustom
+                                        id="email"
                                         type="text"
-                                        value="#{user.params.name}"
+                                        value="#{user.params.email}"
                                         placeholder="Digite o email do usuário"
                                 />
                             </p:panelGrid>
                             <p:panelGrid columns="1" layout="grid" style="margin-top: 45px">
                                 <comp:buttonCustom
-                                        process="@form"
                                         value="Pesquisar"
                                         action="#{user.search}"
                                         update=":frm:user-table"

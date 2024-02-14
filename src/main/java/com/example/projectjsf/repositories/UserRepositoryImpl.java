@@ -75,15 +75,7 @@ public class UserRepositoryImpl implements UserRepository {
         List<UserEntity> user;
         try {
             session = open();
-            StringBuilder sql = new StringBuilder("from UserEntity u ");
-            if (params.getName() != null) {
-                sql.append("where upper(u.name) like " + "'").append(params.getName().toUpperCase()).append("' ");
-            }
-            if (params.getEmail() != null) {
-                if (sql.toString().contains("where")) {
-                    sql.append("or upper(u.email) like " + "'").append(params.getEmail().toUpperCase()).append("' ");
-                } else sql.append("where upper(u.email) like " + "'").append(params.getEmail().toUpperCase()).append("' ");
-            }
+            StringBuilder sql = getPredicates(params);
             TypedQuery<UserEntity> query = session.createQuery(sql.toString(), UserEntity.class);
             user = query.getResultList();
         } finally {
@@ -91,5 +83,35 @@ public class UserRepositoryImpl implements UserRepository {
         }
 
         return user;
+    }
+
+    private StringBuilder getPredicates(UserDTO params) {
+        StringBuilder sql = new StringBuilder("from UserEntity u");
+        boolean whereAdded = false;
+
+        if (params.getName() != null) {
+            sql.append(" where")
+                    .append(" upper(u.name) like '")
+                    .append(params.getName().toUpperCase())
+                    .append("'");
+            whereAdded = true;
+        }
+
+        if (params.getEmail() != null) {
+            sql.append(whereAdded ? " and" : " where")
+                    .append(" upper(u.email) like '")
+                    .append(params.getEmail().toUpperCase())
+                    .append("'");
+            whereAdded = true;
+        }
+
+        if (params.getCpf() != null) {
+            sql.append(whereAdded ? " and" : " where")
+                    .append(" upper(u.email) like '")
+                    .append(params.getEmail().toUpperCase())
+                    .append("'");
+        }
+
+        return sql;
     }
 }

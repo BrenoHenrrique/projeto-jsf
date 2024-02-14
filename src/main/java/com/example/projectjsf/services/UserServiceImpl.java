@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService, Serializable {
         List<UserEntity> entities = repository.findAll();
         if (entities == null || entities.isEmpty()) {
             UtilMessages.warnningMessage("Usuários não encontrados.");
-            throw new Exception("Usuários não encontrados.");
         }
 
         return entities;
@@ -36,7 +35,6 @@ public class UserServiceImpl implements UserService, Serializable {
         UserEntity entity = repository.findById(id);
         if (entity == null) {
             UtilMessages.errorMessage("Usuário não encontrado, tente novamente ou entre em contato com o adm.");
-            throw new Exception("Usuário não encontrado");
         }
 
         return entity;
@@ -54,7 +52,6 @@ public class UserServiceImpl implements UserService, Serializable {
         List<UserEntity> entities = repository.search(params);
         if (entities == null || entities.isEmpty()) {
             UtilMessages.warnningMessage("Usuários não encontrados.");
-            throw new Exception("Usuários não encontrados.");
         }
 
         return entities;

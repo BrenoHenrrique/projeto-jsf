@@ -4,6 +4,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
 <cc:interface>
+    <cc:attribute name="id" type="java.lang.String"/>
     <cc:attribute name="type" type="java.lang.String"/>
     <cc:attribute name="value" type="java.lang.String"/>
     <cc:attribute name="required" type="java.lang.Boolean"/>
@@ -39,11 +40,13 @@
         }
     </style>
     <p:inputText
+            id="#{cc.attrs.id}"
             type="#{cc.attrs.type}"
             styleClass="input-custom"
             value="#{cc.attrs.value}"
             required="#{cc.attrs.required}"
             placeholder="#{cc.attrs.placeholder}"
+            converter="emptyStringToNullConverter"
             requiredMessage="#{cc.attrs.requiredMessage}"
     />
 </cc:implementation>
